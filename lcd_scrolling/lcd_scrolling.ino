@@ -49,19 +49,204 @@
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-void setup() {
-  // Code is ran only once
-  // set up the LCD's number of columns and rows:
-  lcd.begin(16, 2);
-  // Print a message to the LCD.
-  lcd.print("   WAIT  ");
+/*
+A set of custom made large numbers for a 16x2 LCD using the 
+ LiquidCrystal librabry. Works with displays compatible with the 
+ Hitachi HD44780 driver. 
+ 
+ The Cuicuit:
+ LCD RS pin to D7
+ LCD Enable pin to D6
+ LCD D4 pin to D5
+ LCD D5 pin to D4
+ LCD D6 pin to D3
+ LCD D7 pin to D2
+ LCD Vee tied to a pot to control brightness
+ LCD Vss and R/W tied to ground
+ LCD Vcc to +5V
+ LCD pin 15 tied to pushbutton for control of backlight
+ 
+ Made by Michael Pilcher
+ 2/9/2010
+ */
+
+int x = 0;
+// the 8 arrays that form each segment of the custom numbers
+byte LT[8] = 
+{
+  B00111,
+  B01111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111
+};
+byte UB[8] =
+{
+  B11111,
+  B11111,
+  B11111,
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B00000
+};
+byte RT[8] =
+{
+  B11100,
+  B11110,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111
+};
+byte LL[8] =
+{
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B01111,
+  B00111
+};
+byte LB[8] =
+{
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B11111,
+  B11111,
+  B11111
+};
+byte LR[8] =
+{
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11110,
+  B11100
+};
+byte UMB[8] =
+{
+  B11111,
+  B11111,
+  B11111,
+  B00000,
+  B00000,
+  B00000,
+  B11111,
+  B11111
+};
+byte LMB[8] =
+{
+  B11111,
+  B00000,
+  B00000,
+  B00000,
+  B00000,
+  B11111,
+  B11111,
+  B11111
+};
+
+
+
+
+
+void customA()
+{
+  lcd.setCursor(x,0);
+  lcd.write(8);
+  lcd.write(6);
+  lcd.write(2);
+  lcd.setCursor(x, 1);
+  lcd.write(255);
+  lcd.write(254);
+  lcd.write(255);
 }
 
-void loop() {
-  // Turn off the display:
-  lcd.noDisplay();
-  delay(500);
-  // Turn on the display:
-  lcd.display();
-  delay(500);
+
+void customI()
+{
+  lcd.setCursor(x,0);
+  lcd.write(1);
+  lcd.write(255);
+  lcd.write(1);
+  lcd.setCursor(x,1);
+  lcd.write(4);
+  lcd.write(255);
+  lcd.write(4);
 }
+
+
+
+void customT()
+{
+  lcd.setCursor(x,0);
+  lcd.write(1);
+  lcd.write(255);
+  lcd.write(1);
+  lcd.setCursor(x,1);
+  lcd.write(254);
+  lcd.write(255);
+}
+
+
+void customW()
+{
+  lcd.setCursor(x,0);
+//  lcd.write(255);
+//  lcd.write(254);
+//  lcd.write(254);
+//  lcd.write(255);
+//  lcd.setCursor(x,1);
+//  lcd.write(3);
+//  lcd.write(8);
+//  lcd.write(2);
+//  lcd.write(5);
+lcd.write(239);
+}
+
+
+void letters1()
+{
+  customW();
+//  x = x + 4;
+//  customA();
+//  x = x + 4;
+//  customI();
+//  x = x + 4;
+//  customT();
+}
+
+
+
+void setup()
+{
+  // assignes each segment a write number
+
+  // sets the LCD's rows and colums:
+  lcd.begin(0, 2);
+  letters1();
+
+}
+
+void loop()
+{
+  
+}
+
+
+
