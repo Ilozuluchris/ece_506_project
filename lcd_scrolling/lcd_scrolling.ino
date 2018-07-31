@@ -207,28 +207,27 @@ void customT()
 void customW()
 {
   lcd.setCursor(x,0);
-//  lcd.write(255);
-//  lcd.write(254);
-//  lcd.write(254);
-//  lcd.write(255);
-//  lcd.setCursor(x,1);
-//  lcd.write(3);
-//  lcd.write(8);
-//  lcd.write(2);
-//  lcd.write(5);
-lcd.write(239);
+  lcd.write(255);
+  lcd.write(254);
+  lcd.write(254);
+  lcd.write(255);
+  lcd.setCursor(x,1);
+  lcd.write(3);
+  lcd.write(8);
+  lcd.write(2);
+  lcd.write(5);
 }
 
 
 void letters1()
 {
   customW();
-//  x = x + 4;
-//  customA();
-//  x = x + 4;
-//  customI();
-//  x = x + 4;
-//  customT();
+x = x + 5;
+  customA();
+  x = x + 4;
+  customI();
+  x = x + 4;
+  customT();
 }
 
 
